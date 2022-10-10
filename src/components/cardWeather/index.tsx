@@ -1,40 +1,38 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 import { useAppSelector } from "@redux/app/hooks";
 
 const CardWeather: React.FC = () => {
   const { weatherCity } = useAppSelector((state) => state.weather);
 
-  useEffect(() => {}, []);
-
   return (
-    <div className="container mx-auto shadow-lg gradient-card mt-10 rounded-lg">
-      <div className="font-Montserrat font-semibold text-3xl space-y-4 px-14 py-10">
-        Tiempo Metereológico
-      </div>
-      <div className="flex justify-between p-14">
-        <div>
-          <div className="font-Montserrat font-light text-5xl">
-            {weatherCity?.main?.temp} °C
-          </div>
-          <div className="text-left">
+    <>
+      <div className="flex flex-col sm:flex-row justify-between px-10 py-10">
+        <div className="flex flex-row items-center justify-between">
+          <div className="text-left mr-8">
             <Image alt="img-time" src="/sol.png" width={90} height={90} />
           </div>
+          <div className="font-Montserrat font-light text-4xl sm:text-5xl">
+            {weatherCity?.name?.length ? weatherCity?.main?.temp : "00.0"} °C
+          </div>
         </div>
-        <div>
-          <div className="font-Montserrat font-normal text-3xl">
-            {weatherCity?.name}
+
+        <div className="flex flex-row sm:flex-col justify-between">
+          <div className="text-left sm:text-right mb-0 sm:mb-4">
+            <div className="font-Montserrat font-normal text-3xl w-40">
+              {weatherCity?.name ? weatherCity?.name : "Sin Datos"}
+            </div>
+            <div className="font-Montserrat font-light text-2xl">
+              {weatherCity?.name?.length && weatherCity?.sys?.country}
+            </div>
           </div>
-          <div className="font-Montserrat font-light text-2xl mb-8">
-            {weatherCity?.sys?.country}
-          </div>
-          <div className="font-Montserrat font-light text-xl">
-            Nublado
-            {/* {weatherCity?.weather[0]?.description} */}
+          <div className="font-Montserrat font-light text-lg text-right">
+            {weatherCity?.name?.length &&
+              weatherCity?.weather?.[0]?.description.toUpperCase()}
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

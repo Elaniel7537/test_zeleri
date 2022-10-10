@@ -23,7 +23,12 @@ const Home: NextPage = (weatherData: any) => {
       <SearchBox />
 
       {/* detalle tiempo de la ciudad */}
-      <CardWeather />
+      <div className="container mx-auto shadow-lg gradient-card mt-10 rounded-lg">
+        <div className="font-Montserrat font-semibold text-3xl px-10 pt-10 pb-5">
+          Tiempo Metereológico
+        </div>
+        <CardWeather />
+      </div>
     </>
   );
 };
