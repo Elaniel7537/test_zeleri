@@ -1,0 +1,7 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.gradient-card {
+    background: linear-gradient(45deg, rgba(145, 145, 145, 1) 5%, rgba(231, 229, 229, 1) 100%);
+}
